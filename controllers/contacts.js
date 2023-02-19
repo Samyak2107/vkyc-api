@@ -49,4 +49,21 @@ const handleNewContact = async (req, res, next) => {
   }
 };
 
-module.exports = { handleNewContact };
+const handleGetAllContacts = async (req, res, next) => {
+  try {
+    const contact = await Contact.find();
+    if (!contact) {
+      res.status(400).json({ error: true, message: "No contacts found!" });
+    } else {
+      res.status(201).json({
+        error: false,
+        data: contact,
+        message: "Here is the list of all contacts in the db!",
+      });
+    }
+  } catch {
+    res.status(500).json({ error: true, message: err.message });
+  }
+};
+
+module.exports = { handleNewContact, handleGetAllContacts };

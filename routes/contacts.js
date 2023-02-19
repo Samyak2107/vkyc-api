@@ -9,9 +9,9 @@ router.post("/add", (req, res) => {
   contactsController.handleNewContact(req, res);
 });
 
-// router.get("/display", (req, res) => {
-//   productsController.handleGetAllProducts(req, res);
-// });
+router.get("/list", (req, res) => {
+  contactsController.handleGetAllContacts(req, res);
+});
 
 // router.post("/modify", (req, res) => {
 //   productsController.handleModifyProduct(req, res);
